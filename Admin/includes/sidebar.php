@@ -80,7 +80,7 @@
         if ($_SESSION['user_role']=='super admin'){
         ?>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="">
+          <a class="nav-link text-white active bg-info" href="profile.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-users"></i>
             </div>
@@ -96,7 +96,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info " href="">
+          <a class="nav-link text-white active bg-info " href="fournisseur.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -130,7 +130,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
-            <span class="nav-link-text ms-1">Gérer Respo des employees</span>
+            <span class="nav-link-text ms-1">TASK1</span>
           </a>
         </li>
         <li class="nav-item">
@@ -138,7 +138,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
-            <span class="nav-link-text ms-1">Gérer Respo des employees</span>
+            <span class="nav-link-text ms-1">TASK2</span>
           </a>
         </li>
         <?php 

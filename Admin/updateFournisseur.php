@@ -8,8 +8,8 @@ include('includes/header.php')
       <div class="col-md-12">
       <?php
             @include 'config/dbcon.php';
-            $id_admin = $_GET['updateid'];
-            $sql = "SELECT * FROM admin WHERE id_admin=$id_admin";
+            $id_four = $_GET['updateid'];
+            $sql = "SELECT * FROM fournisseur WHERE id_four=$id_four";
             $query = $conn->prepare($sql);
             $query->execute();
             $row = $query->fetch(PDO::FETCH_ASSOC);
@@ -21,28 +21,29 @@ include('includes/header.php')
                 $prenom = $_POST['prenom'];
                 $email = $_POST['email'];
                 $pass = md5($_POST['password']); 
+
                 //img part
-                $file_name=$_FILES['image']['name'];
+                $file_name = $_FILES['image']['name'];
                 $tempname=$_FILES['image']['tmp_name'];
-                $folder='../images/'.$file_name;
-                
+                $folder = '../images/' . $file_name;
+
+
                  // Insert new product into the database $id_admin
-                 $update = "UPDATE admin SET nom = :nom, prenom = :prenom, email = :email,
-                 password = :password, image = :file_name WHERE id_admin = :id";
-                  $query = $conn->prepare($update);
-                  if (move_uploaded_file($tempname, $folder)) {
-                      echo "file succ";
-                  } else {
-                      echo "was not uploaded";
-                  }
-                  $query->bindParam(':nom', $nom, PDO::PARAM_STR);
-                  $query->bindParam(':prenom', $prenom, PDO::PARAM_STR);
-                  $query->bindParam(':email', $email, PDO::PARAM_STR);
-                  $query->bindParam(':password', $pass, PDO::PARAM_STR);  
-                  $query->bindParam(':file_name', $file_name, PDO::PARAM_STR);
-                  $query->bindParam(':id', $id_admin, PDO::PARAM_INT);
-                  $query->execute();
-                  exit();// Ensure script stops executing after redirect
+                $update = "UPDATE fournisseur SET nom = :nom, prenom = :prenom, email = :email,
+                password = :password WHERE id_four = :id";
+                $query = $conn->prepare($update);
+                if(move_uploaded_file($tempname,$folder)){
+                    echo "file succ";
+                   }else{
+                    echo "was not uploaded";
+                }
+                $query->bindParam(':nom', $nom, PDO::PARAM_STR);
+                $query->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+                $query->bindParam(':email', $email, PDO::PARAM_STR);
+                $query->bindParam(':password', $pass, PDO::PARAM_STR);
+                $query->bindParam(':id', $id_four, PDO::PARAM_INT); // Assuming id is an integer, adjust if it's not
+                $query->execute();
+                exit(); // Ensure script stops executing after redirect
                         
 }
 ?>
@@ -63,13 +64,12 @@ include('includes/header.php')
 </head>
 <body>
   <div class="bc">
-    <div class="form-container"  >
-      <form action="" method="post" enctype="multipart/form-data">
-        <h3>Update Admin</h3>
+    <div class="form-container">
+      <form action="" method="post">
+        <h3>Update Fournisseur</h3>
         <input type="text" name="nom" required value="<?php echo $nom ?>" >
         <input type="text" name="prenom" required value="<?php echo $prenom ?>">
         <input type="email" name="email" required value="<?php echo $email ?>">
-        <input type="file" name="image" class="form-control" id="image" />
         <input type="password" name="password" required >
         <input type="submit" class="bg-info"  name="submit"  value="submit" class="form-btn">
       </form>

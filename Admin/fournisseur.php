@@ -33,12 +33,12 @@ if(isset($_POST['validate'])){
       $inputValue=0;
     }
     // Use prepared statement to prevent SQL injection
-    $sql = "SELECT * FROM admin WHERE id_admin = :inputValue OR nom = :inputValue OR prenom = :inputValue OR email = :inputValue OR status=:inputValue ";
+    $sql = "SELECT * FROM fournisseur WHERE id_four = :inputValue OR nom = :inputValue OR prenom = :inputValue OR email = :inputValue OR status=:inputValue ";
     $query = $conn->prepare($sql);
     $query->bindParam(':inputValue', $inputValue, PDO::PARAM_STR);
     if($query->execute()){
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $id_admin = $row['id_admin'];
+            $id_four = $row['id_four'];
             $nom = $row['nom'];
             $prenom = $row['prenom'];
             $email = $row['email'];
@@ -54,11 +54,11 @@ if(isset($_POST['validate'])){
                   <td><?php echo $prenom ?> </td>
                   <td><?php echo $email ?> </td>
                   <td>
-                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updatePr.php?updateid='<?php echo $id_admin;?>"><?php echo $state ?></a></button>  
+                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updatePr.php?updateid='<?php echo $id_four;?>"><?php echo $state ?></a></button>  
                   </td>
                   <td>
-                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateAdmin.php?updateid=<?php echo $id_admin;?>">update</a></button>
-                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="delete.php?deletedid=<?php echo $id_admin;?>">delete</a></button>
+                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_four;?>">update</a></button>
+                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_four;?>">delete</a></button>
                   </td>
               </tr>
             <?php
@@ -66,36 +66,33 @@ if(isset($_POST['validate'])){
     }
 } else {
     // Display all products if the form is not submitted
-    $sql = "SELECT * FROM admin";
+    $sql = "SELECT * FROM fournisseur";
     $query = $conn->prepare($sql);
 
     if ($query->execute()) {
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-          $id_admin = $row['id_admin'];
+          $id_four= $row['id_four'];
           $nom = $row['nom'];
           $prenom = $row['prenom'];
           $email = $row['email'];
           $status =$row['status'];
-          if ($status == 1) {
-            $state = 'Activé';
-        }
-        if ($status == 0) {
-            $state = 'désactivé';
-        }
-        
+          if($status=1){
+            $state ='Activé';
+          }else{
+            $state ='désactivé';
+          }
           ?>
           <tr>
               <td> <?php echo $nom ?> </td>
               <td><?php echo $prenom ?> </td>
               <td><?php echo $email ?> </td>
               <td>
-                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updatePr.php?updateid='<?php echo $id_admin;?>"><?php echo $state ?></a></button>  
+                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updatePr.php?updateid='<?php echo $id_four;?>"><?php echo $state ?></a></button>  
               </td>
               <td>
-                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateAdmin.php?updateid=<?php echo $id_admin;?>">update</a></button>
-                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="delete.php?deletedid=<?php echo $id_admin;?>">delete</a></button>
+                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_four;?>">update</a></button>
+                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_four;?>">delete</a></button>
               </td>
-              <h1><?php  echo $state; ?></h1>
             </tr>
         <?php
         }
@@ -150,8 +147,12 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+
+
 <!--the script-->
 
+<!--here ends the first container-->
+<!--here starts the second container-->
 <div class="container" id="add_user">
     <div class="row">
       <div class="col-md-12">
@@ -170,7 +171,7 @@ if(isset($_POST['submit'])){
     $folder = '../images/' . $file_name;
     
     // Check if the product already exists
-    $select = "SELECT * FROM admin WHERE email = :email";
+    $select = "SELECT * FROM fournisseur WHERE email = :email";
     $query = $conn->prepare($select);
     $query->bindParam(':email', $email, PDO::PARAM_STR);
     $query->execute();
@@ -178,13 +179,14 @@ if(isset($_POST['submit'])){
     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
     if (count($rows) > 0) {
-        $error[] = 'Admin deja exist!';
+        $error[] = 'fournisseur deja exist!';
     } else {
       if($pass != $cpass){
         $error[] = 'password not matched!';
      }else{
        // Insert new product into the database
-       $insert = "INSERT INTO admin(nom, prenom, email, password,image) VALUES (:nom, :prenom, :email, :password, :file_name)";
+       //$insert = "INSERT INTO admin(nom, prenom, email, password,image) VALUES (:nom, :prenom, :email, :password, :file_name)";
+       $insert="INSERT INTO fournisseur(nom,prenom, email, password,image) VALUES (:nom, :prenom, :email, :password, :file_name)";
        $query = $conn->prepare($insert);
        if(move_uploaded_file($tempname,$folder)){
         echo "file succ";
@@ -221,8 +223,8 @@ if(isset($_POST['submit'])){
     <div class="form-container">
       <form action="" method="post" enctype="multipart/form-data">
         <h3>Ajouter Admin</h3>
-        <input type="text" name="nom" required placeholder="entrer le nom d'Admin">
-        <input type="text" name="prenom" required placeholder="entrer le prenom de l'Admin">
+        <input type="text" name="nom" required placeholder="entrer le nom ">
+        <input type="text" name="prenom" required placeholder="entrer le prenom ">
         <input type="email" name="email" required placeholder="enter l'email de l'utilisateur">
         <input type="file" name="image" class="form-control" id="image" />
         <input type="password" name="password" required placeholder="enter un mot de pass">
