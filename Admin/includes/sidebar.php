@@ -112,7 +112,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
