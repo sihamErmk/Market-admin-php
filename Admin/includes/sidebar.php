@@ -42,7 +42,7 @@
         if ($_SESSION['user_role']=='admin'){
         ?>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="index.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-users"></i>
             </div>
@@ -50,7 +50,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info " href="admin.php">
+          <a class="nav-link text-white active bg-info " href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -58,7 +58,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
@@ -66,7 +66,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
@@ -80,7 +80,7 @@
         if ($_SESSION['user_role']=='super admin'){
         ?>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="index.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-users"></i>
             </div>
@@ -96,7 +96,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info " href="admin.php">
+          <a class="nav-link text-white active bg-info " href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -104,7 +104,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
@@ -126,7 +126,7 @@
         if ($_SESSION['user_role']=='fournisseur'){
         ?>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
@@ -134,7 +134,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
@@ -148,7 +148,7 @@
         if ($_SESSION['user_role']=='respo employee'){
         ?>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
@@ -156,7 +156,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="games.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
