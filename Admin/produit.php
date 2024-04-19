@@ -6,7 +6,7 @@ include('includes/header.php')
 <div class="container my-5">
 		<form method="post">
 			<input type="text" name="search" placeholder="Search Anything ...">
-			<button type="submit" name="validate" class="btn btn-info">Search</button>
+			<button type="submit" name="validate" class="btn btn-info">llll</button>
 		</form>
 </div>
 <div class="container1" id="userTable">
@@ -244,5 +244,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
    
 <?php include('includes/footer.php') ?>
-
-
