@@ -27,7 +27,7 @@ if(isset($_POST['submit'])) {
             }
             else if($user_role == 'ResponsableStock') {
                 $_SESSION['admin_name'] = $user_name;
-                header('location: Admin/stock.php');
+                header('location: Admin/respS.php');
                 exit();
             }
             else if($user_role == 'admin'){
