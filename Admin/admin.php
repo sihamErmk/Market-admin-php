@@ -89,7 +89,7 @@ if(isset($_POST['validate'])){
               <td><?php echo $prenom ?> </td>
               <td><?php echo $email ?> </td>
               <td>
-                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chState.php?updateid='<?php echo $id_admin;?>"><?php echo $state ?></a></button>  
+                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chState.php?stateid='<?php echo $id_admin;?>"><?php echo $state ?></a></button>  
               </td>
               <td>
                 <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateAdmin.php?updateid=<?php echo $id_admin;?>">update</a></button>
