@@ -11,38 +11,44 @@ if(isset($_POST['submit'])) {
     $qry->bindParam(':password', $password);
     $qry->execute();
     $row = $qry->fetch(PDO::FETCH_ASSOC);
-
-    if($row) {
-        $user_role = $row['user_role'];
-        $user_name = $row['nom'];
-        $_SESSION['user_role']= $row['user_role'];
-        $_SESSION['nom']= $row['nom'];
-
-        if($user_role == 'super admin') {
-            $_SESSION['admin_name'] = $user_name;
-            header('location: Admin/autre.php');
-            exit();
+    $state=$row['status'];
+    if($state==1){
+        if($row) {
+            $user_role = $row['user_role'];
+            $user_name = $row['nom'];
+            $_SESSION['user_role']= $row['user_role'];
+            $_SESSION['nom']= $row['nom'];
+    
+            if($user_role == 'super admin') {
+                $_SESSION['admin_name'] = $user_name;
+                header('location: Admin/autre.php');
+                exit();
+            }
+            else if($user_role == 'ResponsableStock') {
+                $_SESSION['admin_name'] = $user_name;
+                header('location: Admin/stock.php');
+                exit();
+            }
+            else if($user_role == 'admin'){
+                header('location: Admin/admin.php');
+                exit();
+            }
+            else if($user_role == 'respo employee'){
+                header('location: employee.php');
+                exit();
+            }
+            else if($user_role == 'fournisseur'){
+                header('location: Admin/four.php');
+                exit();
+            }
+        } else {
+            $error[] = 'Incorrect email or password!';
         }
-        else if($user_role == 'ResponsableStock') {
-            $_SESSION['admin_name'] = $user_name;
-            header('location: Admin/stock.php');
-            exit();
-        }
-        else if($user_role == 'admin'){
-            header('location: Admin/admin.php');
-            exit();
-        }
-        else if($user_role == 'respo employee'){
-            header('location: employee.php');
-            exit();
-        }
-        else if($user_role == 'fournisseur'){
-            header('location: Admin/four.php');
-            exit();
-        }
-    } else {
-        $error[] = 'Incorrect email or password!';
     }
+    else {
+        header('location: Admin/accessdenied.php');
+        exit();
+    }  
 }
 ?>
 <!DOCTYPE html>
