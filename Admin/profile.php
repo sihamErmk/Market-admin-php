@@ -3,6 +3,8 @@ session_start();
 include('includes/hd.php') ;
 $name=$_SESSION['nom'];
 $email=$_SESSION['email'];
+$image=$_SESSION['image'];
+
 //echo $email;
 
 echo '<pre>';

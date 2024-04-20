@@ -19,6 +19,7 @@ if(isset($_POST['submit'])) {
             $_SESSION['user_role']= $row['user_role'];
             $_SESSION['email']= $row['email'];
             $_SESSION['nom']= $row['nom'];
+            $_SESSION['image']=$row['image'];
     
             if($user_role == 'super admin') {
                 $_SESSION['admin_name'] = $user_name;

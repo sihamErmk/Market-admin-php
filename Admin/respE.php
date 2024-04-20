@@ -54,11 +54,11 @@ if(isset($_POST['validate'])){
                   <td><?php echo $prenom ?> </td>
                   <td><?php echo $email ?> </td>
                   <td>
-                  <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_respE;?>"><?php echo $state ?></a></button>  
+                  <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateE.php?stateid=<?php echo $id_respE;?>"><?php echo $state ?></a></button>  
                   </td>
                   <td>
-                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_respE;?>">update</a></button>
-                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_respE;?>">delete</a></button>
+                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateE.php?updateid=<?php echo $id_respE;?>">update</a></button>
+                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteE.php?deletedid=<?php echo $id_respE;?>">delete</a></button>
                   </td>
               </tr>
             <?php
@@ -71,7 +71,7 @@ if(isset($_POST['validate'])){
 
     if ($query->execute()) {
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-          $id_four= $row['id_respE'];
+          $id_respE= $row['id_respE'];
           $nom = $row['nom'];
           $prenom = $row['prenom'];
           $email = $row['email'];
@@ -87,11 +87,11 @@ if(isset($_POST['validate'])){
               <td><?php echo $prenom ?> </td>
               <td><?php echo $email ?> </td>
               <td>
-              <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_respE;?>"><?php echo $state ?></a></button>  
+              <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateE.php?stateid=<?php echo $id_respE;?>"><?php echo $state ?></a></button>  
               </td>
               <td>
-                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_respE;?>">update</a></button>
-                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_respE;?>">delete</a></button>
+                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateE.php?updateid=<?php echo $id_respE;?>">update</a></button>
+                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteE.php?deletedid=<?php echo $id_respE;?>">delete</a></button>
               </td>
             </tr>
         <?php
