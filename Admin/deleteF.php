@@ -18,7 +18,7 @@ if(isset($_GET['deletedid'])) {
         $stmt->execute();
 
         // Redirect back to the previous page or wherever appropriate
-       // header('Location: index.php');
+        header('Location: fournisseur.php');
         exit();
     } catch(PDOException $e) {
         // Handle error

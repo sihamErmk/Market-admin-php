@@ -10,7 +10,7 @@ include('includes/header.php')
 		</form>
 </div>
 <div class="container1" id="userTable">
-  <button class="btn btn-info my-5" id="addbtn">Ajouter Admin</button>
+  <button class="btn btn-info my-5" id="addbtn">Ajouter fournisseur</button>
   <table class="table">
   <thead>
     <tr>
@@ -43,9 +43,9 @@ if(isset($_POST['validate'])){
             $prenom = $row['prenom'];
             $email = $row['email'];
             $status =$row['status'];
-            if($status=1){
+            if($status==1){
               $state ='Activé';
-            }else if($status=0){
+            }else if($status==0){
               $state ='désactivé';
             }
             ?>
@@ -54,7 +54,7 @@ if(isset($_POST['validate'])){
                   <td><?php echo $prenom ?> </td>
                   <td><?php echo $email ?> </td>
                   <td>
-                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updatePr.php?updateid='<?php echo $id_four;?>"><?php echo $state ?></a></button>  
+                  <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_four;?>"><?php echo $state ?></a></button>  
                   </td>
                   <td>
                     <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_four;?>">update</a></button>
@@ -76,7 +76,7 @@ if(isset($_POST['validate'])){
           $prenom = $row['prenom'];
           $email = $row['email'];
           $status =$row['status'];
-          if($status=1){
+          if($status==1){
             $state ='Activé';
           }else{
             $state ='désactivé';
@@ -87,7 +87,7 @@ if(isset($_POST['validate'])){
               <td><?php echo $prenom ?> </td>
               <td><?php echo $email ?> </td>
               <td>
-                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updatePr.php?updateid='<?php echo $id_four;?>"><?php echo $state ?></a></button>  
+              <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_four;?>"><?php echo $state ?></a></button>  
               </td>
               <td>
                 <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_four;?>">update</a></button>
@@ -222,7 +222,7 @@ if(isset($_POST['submit'])){
   <div class="bc">
     <div class="form-container">
       <form action="" method="post" enctype="multipart/form-data">
-        <h3>Ajouter Admin</h3>
+        <h3>Ajouter Fournisseur</h3>
         <input type="text" name="nom" required placeholder="entrer le nom ">
         <input type="text" name="prenom" required placeholder="entrer le prenom ">
         <input type="email" name="email" required placeholder="enter l'email de l'utilisateur">
