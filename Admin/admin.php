@@ -76,6 +76,7 @@ if(isset($_POST['validate'])){
           $prenom = $row['prenom'];
           $email = $row['email'];
           $status =$row['status'];
+          
           if($status=1){
             $state ='Activé';
           }else{

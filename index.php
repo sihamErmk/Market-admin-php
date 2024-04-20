@@ -1,12 +1,10 @@
 <?php
 session_start();
-
 include 'Admin/config/dbcon.php';
 
 if(isset($_POST['submit'])) {
     $useremail = $_POST['user_email'];
     $password = $_POST['user_password'];
-
     $select = "SELECT * FROM users WHERE email = :useremail AND password = :password";
     $qry = $conn->prepare($select);
     $qry->bindParam(':useremail', $useremail);
@@ -34,14 +32,19 @@ if(isset($_POST['submit'])) {
             header('location: Admin/admin.php');
             exit();
         }
-
+        else if($user_role == 'respo employee'){
+            header('location: employee.php');
+            exit();
+        }
+        else if($user_role == 'fournisseur'){
+            header('location: Admin/four.php');
+            exit();
+        }
     } else {
         $error[] = 'Incorrect email or password!';
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

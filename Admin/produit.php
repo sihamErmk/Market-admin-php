@@ -5,19 +5,21 @@ include('includes/header.php')
 <!--here starts the first container-->
 <div class="container my-5">
 		<form method="post">
-			<input type="text" name="search" placeholder="Search Anything ...">
-			<button type="submit" name="validate" class="btn btn-info">llll</button>
+			<input type="text" name="search" placeholder="Search ...">
+			<button type="submit" name="validate" class="btn btn-info">Search</button>
 		</form>
 </div>
 <div class="container1" id="userTable">
-  <button class="btn btn-info my-5" id="addbtn">Add User</button>
+  <button class="btn btn-info my-5" id="addbtn">ajouter produit</button>
   <table class="table">
   <thead>
     <tr>
-      <th scope="col">Produit ID</th>
+      
       <th scope="col">Produit Nom</th>
       <th scope="col">Price</th>
       <th scope="col">Categorie</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Image</th>
       <th scope="col">Description</th>
       <th scope="col">Operations</th>
     </tr>
@@ -37,7 +39,9 @@ if(isset($_POST['validate'])){
             $id_produit = $row['id_produit'];
             $pnom = $row['pnom'];
             $Pprice = $row['Pprice'];
+            $id_category = $row['id_category'];
             $quantite = $row['quantite'];
+            $image= $row['image'];//add image last
             $description = $row['description'];
 
             echo '<tr>
@@ -154,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // Handle file upload
       $file_name = $_FILES['image']['name']; // Get the name of the uploaded file
       $folder = '../images/' . $file_name; // Get the temporary location of the uploaded file
-  
+      $description = $_POST['description'];//add description last
       // Store the file path in the database
       //$image = $target_file; // Set $image variable to the file path
       
@@ -172,13 +176,14 @@ document.addEventListener("DOMContentLoaded", function() {
         $error[] = 'Product already exists!';
     } else {
         // Insert new product into the database
-        $insert = "INSERT INTO produit(pnom, Pprice, quantite, id_category, image ) VALUES (:pnom, :Pprice, :quantite, :id_category, :image)";
+        $insert = "INSERT INTO produit(pnom, Pprice, quantite, id_category, image,description ) VALUES (:pnom, :Pprice, :quantite, :id_category, :image, :description)";
         $query = $conn->prepare($insert);
         $query->bindParam(':pnom', $pnom, PDO::PARAM_STR);
         $query->bindParam(':Pprice', $Pprice, PDO::PARAM_INT);
         $query->bindParam(':quantite', $quantite, PDO::PARAM_INT);
         $query->bindParam(':id_category', $id_category, PDO::PARAM_INT);
         $query->bindParam(':image', $file_name, PDO::PARAM_STR);
+        $query->bindParam(':description', $description, PDO::PARAM_STR);//add  description last
 
         $query->execute();
        
@@ -207,10 +212,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <form action="" method="post"  enctype="multipart/form-data">
    <h3>Ajouter Produit</h3>
+   
    <input type="text" name="pnom" required placeholder="entrer le nom ">
    <input type="number" name="Pprice" required placeholder="entrer le prix">
    <input type="number" name="quantite" required placeholder="enter la quantite au stock">
    <input type="file" name="image" >
+   <input type="text" name="description" required placeholder="description ">
+
    <!--<input type="text" name="description" required placeholder="ajouter une description">-->
    <select name="category">
    <?php  

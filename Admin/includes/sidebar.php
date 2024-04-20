@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" style="background-color:black;" id="sidenav-main">
@@ -31,6 +32,14 @@
               <i class="fa-solid fa-users"></i>
             </div>
             <span class="nav-link-text ms-1">Gerer Produit</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white active bg-info" href="commande.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <span class="nav-link-text ms-1">Gerer commandes</span>
           </a>
         </li>
         <?php
@@ -78,7 +87,7 @@
         if ($_SESSION['user_role']=='super admin'){
         ?>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="">
+          <a class="nav-link text-white active bg-info" href="profile.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-users"></i>
             </div>
@@ -94,7 +103,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info " href="">
+          <a class="nav-link text-white active bg-info " href="fournisseur.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -128,7 +137,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
-            <span class="nav-link-text ms-1">Gérer Respo des employees</span>
+            <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
         <li class="nav-item">
@@ -136,7 +145,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
-            <span class="nav-link-text ms-1">Gérer Respo des employees</span>
+            <span class="nav-link-text ms-1">Commandes</span>
           </a>
         </li>
         <?php 
