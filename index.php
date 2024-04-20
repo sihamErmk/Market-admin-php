@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
                 exit();
             }
             else if($user_role == 'respo employee'){
-                header('location: employee.php');
+                header('location: Admin/respE.php');
                 exit();
             }
             else if($user_role == 'fournisseur'){

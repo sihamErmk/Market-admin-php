@@ -16,6 +16,7 @@ if(isset($_GET['deletedid'])) {
 
         // Execute the delete statement
         $stmt->execute();
+        
 
         // Redirect back to the previous page or wherever appropriate
         header('Location: respS.php');
