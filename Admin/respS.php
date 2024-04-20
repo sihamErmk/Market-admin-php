@@ -58,7 +58,7 @@ if(isset($_POST['validate'])){
                   </td>
                   <td>
                     <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_respS;?>">update</a></button>
-                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_respS;?>">delete</a></button>
+                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteS.php?deletedid=<?php echo $id_respS;?>">delete</a></button>
                   </td>
               </tr>
             <?php
@@ -87,11 +87,11 @@ if(isset($_POST['validate'])){
               <td><?php echo $prenom ?> </td>
               <td><?php echo $email ?> </td>
               <td>
-              <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_respS;?>"><?php echo $state ?></a></button>  
+              <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateS.php?stateid=<?php echo $id_respS;?>"><?php echo $state ?></a></button>  
               </td>
               <td>
                 <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_respS;?>">update</a></button>
-                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_respS;?>">delete</a></button>
+                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteS.php?deletedid=<?php echo $id_respS;?>">delete</a></button>
               </td>
             </tr>
         <?php
