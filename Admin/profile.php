@@ -2,7 +2,7 @@
 session_start();
 include('includes/hd.php') ;
 $name=$_SESSION['nom'];
-//$email=$_SESSION['email'];
+$email=$_SESSION['email'];
 //echo $email;
 
 echo '<pre>';
@@ -24,7 +24,7 @@ echo '</pre>';
                 <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
             </button>
             <span class="name mt-3"><?php echo $name ?></span> 
-            <span class="idd"><</span> 
+            <span class="idd"><?php echo $email ?></span> 
             <div class="d-flex flex-row justify-content-center align-items-center gap-2">
                 <span class="idd1">Oxc4c16a645_b21a</span> 
                 <span><i class="fa fa-copy"></i></span>

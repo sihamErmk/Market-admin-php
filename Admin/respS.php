@@ -10,7 +10,7 @@ include('includes/header.php')
 		</form>
 </div>
 <div class="container1" id="userTable">
-  <button class="btn btn-info my-5" id="addbtn">Ajouter fournisseur</button>
+  <button class="btn btn-info my-5" id="addbtn">Ajouter Responsable de stock</button>
   <table class="table">
   <thead>
     <tr>
@@ -33,12 +33,12 @@ if(isset($_POST['validate'])){
       $inputValue=0;
     }
     // Use prepared statement to prevent SQL injection
-    $sql = "SELECT * FROM fournisseur WHERE id_four = :inputValue OR nom = :inputValue OR prenom = :inputValue OR email = :inputValue OR status=:inputValue ";
+    $sql = "SELECT * FROM resps WHERE id_respS = :inputValue OR nom = :inputValue OR prenom = :inputValue OR email = :inputValue OR status=:inputValue ";
     $query = $conn->prepare($sql);
     $query->bindParam(':inputValue', $inputValue, PDO::PARAM_STR);
     if($query->execute()){
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $id_four = $row['id_four'];
+            $id_respS = $row['id_respS'];
             $nom = $row['nom'];
             $prenom = $row['prenom'];
             $email = $row['email'];
@@ -54,11 +54,11 @@ if(isset($_POST['validate'])){
                   <td><?php echo $prenom ?> </td>
                   <td><?php echo $email ?> </td>
                   <td>
-                  <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_four;?>"><?php echo $state ?></a></button>  
+                  <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_respS;?>"><?php echo $state ?></a></button>  
                   </td>
                   <td>
-                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_four;?>">update</a></button>
-                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_four;?>">delete</a></button>
+                    <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_respS;?>">update</a></button>
+                    <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_respS;?>">delete</a></button>
                   </td>
               </tr>
             <?php
@@ -66,12 +66,12 @@ if(isset($_POST['validate'])){
     }
 } else {
     // Display all products if the form is not submitted
-    $sql = "SELECT * FROM fournisseur";
+    $sql = "SELECT * FROM resps";
     $query = $conn->prepare($sql);
 
     if ($query->execute()) {
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-          $id_four= $row['id_four'];
+          $id_respS= $row['id_respS'];
           $nom = $row['nom'];
           $prenom = $row['prenom'];
           $email = $row['email'];
@@ -87,11 +87,11 @@ if(isset($_POST['validate'])){
               <td><?php echo $prenom ?> </td>
               <td><?php echo $email ?> </td>
               <td>
-              <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_four;?>"><?php echo $state ?></a></button>  
+              <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="chStateF.php?stateid=<?php echo $id_respS;?>"><?php echo $state ?></a></button>  
               </td>
               <td>
-                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_four;?>">update</a></button>
-                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_four;?>">delete</a></button>
+                <button class="btn  btn-info text-white"><a style="text-decoration:none;" href="updateFournisseur.php?updateid=<?php echo $id_respS;?>">update</a></button>
+                <button class="btn btn-info text-white"><a style="text-decoration:none;" href="deleteF.php?deletedid=<?php echo $id_respS;?>">delete</a></button>
               </td>
             </tr>
         <?php
@@ -171,7 +171,7 @@ if(isset($_POST['submit'])){
     $folder = '../images/' . $file_name;
     
     // Check if the product already exists
-    $select = "SELECT * FROM fournisseur WHERE email = :email";
+    $select = "SELECT * FROM resps WHERE email = :email";
     $query = $conn->prepare($select);
     $query->bindParam(':email', $email, PDO::PARAM_STR);
     $query->execute();
@@ -179,14 +179,14 @@ if(isset($_POST['submit'])){
     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
     if (count($rows) > 0) {
-        $error[] = 'fournisseur deja exist!';
+        $error[] = 'Ce Responsable est deja exist!';
     } else {
       if($pass != $cpass){
         $error[] = 'password not matched!';
      }else{
        // Insert new product into the database
        //$insert = "INSERT INTO admin(nom, prenom, email, password,image) VALUES (:nom, :prenom, :email, :password, :file_name)";
-       $insert="INSERT INTO fournisseur(nom,prenom, email, password,image) VALUES (:nom, :prenom, :email, :password, :file_name)";
+       $insert="INSERT INTO resps(nom,prenom, email, password,image) VALUES (:nom, :prenom, :email, :password, :file_name)";
        $query = $conn->prepare($insert);
        if(move_uploaded_file($tempname,$folder)){
         echo "file succ";
@@ -222,7 +222,7 @@ if(isset($_POST['submit'])){
   <div class="bc">
     <div class="form-container">
       <form action="" method="post" enctype="multipart/form-data">
-        <h3>Ajouter Fournisseur</h3>
+        <h3>Ajouter Responsable de Stock</h3>
         <input type="text" name="nom" required placeholder="entrer le nom ">
         <input type="text" name="prenom" required placeholder="entrer le prenom ">
         <input type="email" name="email" required placeholder="enter l'email de l'utilisateur">
