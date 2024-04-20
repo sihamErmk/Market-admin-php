@@ -1,9 +1,13 @@
 <?php
-
 session_start();
-include('includes/header.php') ;
+include('includes/hd.php') ;
 $name=$_SESSION['nom'];
+$email=$_SESSION['email'];
+echo $email;
 
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +20,11 @@ $name=$_SESSION['nom'];
 <body>    
     <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> <div class="card p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center">
-            <button class="btn2 btn-secondary"> 
+            <button class="btn btn-secondary"> 
                 <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
             </button>
-            <span class="name mt-3"><?php echo $name?> </span> 
-            <span class="idd">@eleanorpena</span> 
+            <span class="name mt-3"><?php echo $name ?></span> 
+            <span class="idd"><?php echo $email  ?></span> 
             <div class="d-flex flex-row justify-content-center align-items-center gap-2">
                 <span class="idd1">Oxc4c16a645_b21a</span> 
                 <span><i class="fa fa-copy"></i></span>

@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0
+    
 }
 
 .card {
@@ -19,7 +20,7 @@
     transform: scale(1.5)
 }
 
-.btn2 {
+.btn {
     height: 140px;
     width: 140px;
     border-radius: 50%
@@ -81,4 +82,10 @@ hr .new1 {
 
 .date {
     background-color: #ccc
+}
+.btn3{
+    justify-content: center;
+
+
+
 }
