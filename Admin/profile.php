@@ -1,9 +1,10 @@
 <?php
 
-include('includes/header.php') 
+session_start();
+include('includes/header.php') ;
+$name=$_SESSION['nom'];
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +16,10 @@ include('includes/header.php')
 <body>    
     <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> <div class="card p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center">
-            <button class="btn btn-secondary"> 
+            <button class="btn2 btn-secondary"> 
                 <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
             </button>
-            <span class="name mt-3">Eleanor Pena</span> 
+            <span class="name mt-3"><?php echo $name?> </span> 
             <span class="idd">@eleanorpena</span> 
             <div class="d-flex flex-row justify-content-center align-items-center gap-2">
                 <span class="idd1">Oxc4c16a645_b21a</span> 
