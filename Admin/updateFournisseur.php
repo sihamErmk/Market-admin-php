@@ -8,8 +8,8 @@ include('includes/header.php')
       <div class="col-md-12">
       <?php
             @include 'config/dbcon.php';
-            $id_admin = $_GET['updateid'];
-            $sql = "SELECT * FROM admin WHERE id_admin=$id_admin";
+            $id_four = $_GET['updateid'];
+            $sql = "SELECT * FROM fournisseur WHERE id_four=$id_four";
             $query = $conn->prepare($sql);
             $query->execute();
             $row = $query->fetch(PDO::FETCH_ASSOC);
@@ -27,8 +27,8 @@ include('includes/header.php')
                 $folder='../images/'.$file_name;
                 
                  // Insert new product into the database $id_admin
-                 $update = "UPDATE admin SET nom = :nom, prenom = :prenom, email = :email,
-                 password = :password, image = :file_name WHERE id_admin = :id";
+                 $update = "UPDATE fournisseur SET nom = :nom, prenom = :prenom, email = :email,
+                 password = :password, image = :file_name WHERE id_four = :id";
                   $query = $conn->prepare($update);
                   if (move_uploaded_file($tempname, $folder)) {
                       echo "file succ";
@@ -40,8 +40,9 @@ include('includes/header.php')
                   $query->bindParam(':email', $email, PDO::PARAM_STR);
                   $query->bindParam(':password', $pass, PDO::PARAM_STR);  
                   $query->bindParam(':file_name', $file_name, PDO::PARAM_STR);
-                  $query->bindParam(':id', $id_admin, PDO::PARAM_INT);
+                  $query->bindParam(':id', $id_four, PDO::PARAM_INT);
                   $query->execute();
+                  
                   exit();// Ensure script stops executing after redirect
                         
 }

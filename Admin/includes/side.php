@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" style="background-color:black;" id="sidenav-main">
@@ -32,14 +31,6 @@
               <i class="fa-solid fa-users"></i>
             </div>
             <span class="nav-link-text ms-1">Gerer Produit</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="commande.php">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fa-solid fa-users"></i>
-            </div>
-            <span class="nav-link-text ms-1">Gerer commandes</span>
           </a>
         </li>
         <?php
@@ -111,7 +102,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="respS.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
@@ -119,11 +110,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-info" href="respE.php">
+          <a class="nav-link text-white active bg-info" href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
-            <span class="nav-link-text ms-1">Gérer resp employees</span>
+            <span class="nav-link-text ms-1">Gérer Respodes employees</span>
           </a>
         </li>
         <?php 
@@ -137,11 +128,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
-<<<<<<< HEAD
-            <span class="nav-link-text ms-1">Profile</span>
-=======
             <span class="nav-link-text ms-1">TASK1</span>
->>>>>>> f96cd591bb9775460027a4aee5f33f63efbdad12
           </a>
         </li>
         <li class="nav-item">
@@ -149,11 +136,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-gamepad"></i>
             </div>
-<<<<<<< HEAD
-            <span class="nav-link-text ms-1">Commandes</span>
-=======
             <span class="nav-link-text ms-1">TASK2</span>
->>>>>>> f96cd591bb9775460027a4aee5f33f63efbdad12
           </a>
         </li>
         <?php 
@@ -185,7 +168,7 @@
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
-        <a class="btn bg-info text-white mt-4 w-100" href="../index.php" type="button">log out</a>
+        <a class="btn3 bg-info text-white mt-4 w-100" href="../index.php" type="button">log out</a>
       </div>
     </div>
   </aside>

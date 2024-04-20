@@ -8,12 +8,12 @@ include('includes/header.php')
       <div class="col-md-12">
       <?php
             @include 'config/dbcon.php';
-            $id_admin = $_GET['updateid'];
-            $sql = "SELECT * FROM admin WHERE id_admin=$id_admin";
+            $id_respS = $_GET['updateid'];
+            $sql = "SELECT * FROM resps WHERE id_respS=$id_respS";
             $query = $conn->prepare($sql);
             $query->execute();
             $row = $query->fetch(PDO::FETCH_ASSOC);
-            $nom = $row['nom'];
+            $nom = $row['nom']; 
             $prenom = $row['prenom'];
             $email = $row['email'];
             if(isset($_POST['submit'])){
@@ -27,8 +27,8 @@ include('includes/header.php')
                 $folder='../images/'.$file_name;
                 
                  // Insert new product into the database $id_admin
-                 $update = "UPDATE admin SET nom = :nom, prenom = :prenom, email = :email,
-                 password = :password, image = :file_name WHERE id_admin = :id";
+                 $update = "UPDATE resps SET nom = :nom, prenom = :prenom, email = :email,
+                 password = :password, image = :file_name WHERE id_respS = :id";
                   $query = $conn->prepare($update);
                   if (move_uploaded_file($tempname, $folder)) {
                       echo "file succ";
@@ -40,8 +40,9 @@ include('includes/header.php')
                   $query->bindParam(':email', $email, PDO::PARAM_STR);
                   $query->bindParam(':password', $pass, PDO::PARAM_STR);  
                   $query->bindParam(':file_name', $file_name, PDO::PARAM_STR);
-                  $query->bindParam(':id', $id_admin, PDO::PARAM_INT);
+                  $query->bindParam(':id', $id_respS, PDO::PARAM_INT);
                   $query->execute();
+                  
                   exit();// Ensure script stops executing after redirect
                         
 }
@@ -65,7 +66,7 @@ include('includes/header.php')
   <div class="bc">
     <div class="form-container"  >
       <form action="" method="post" enctype="multipart/form-data">
-        <h3>Update Admin</h3>
+        <h3>Update Responsable de stock</h3>
         <input type="text" name="nom" required value="<?php echo $nom ?>" >
         <input type="text" name="prenom" required value="<?php echo $prenom ?>">
         <input type="email" name="email" required value="<?php echo $email ?>">

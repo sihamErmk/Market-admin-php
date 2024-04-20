@@ -11,18 +11,42 @@ if(isset($_POST['submit'])) {
     $qry->bindParam(':password', $password);
     $qry->execute();
     $row = $qry->fetch(PDO::FETCH_ASSOC);
-
-    if($row) {
-        $user_role = $row['user_role'];
-        $user_name = $row['nom'];
-        $_SESSION['user_role']= $row['user_role'];
-        $_SESSION['nom']= $row['nom'];
-
-        if($user_role == 'super admin') {
-            $_SESSION['admin_name'] = $user_name;
-            header('location: Admin/autre.php');
-            exit();
+    $state=$row['status'];
+    if($state==1){
+        if($row) {
+            $user_role = $row['user_role'];
+            $user_name = $row['nom'];
+            $_SESSION['user_role']= $row['user_role'];
+            $_SESSION['email']= $row['email'];
+            $_SESSION['nom']= $row['nom'];
+            $_SESSION['image']=$row['image'];
+    
+            if($user_role == 'super admin') {
+                $_SESSION['admin_name'] = $user_name;
+                header('location: Admin/autre.php');
+                exit();
+            }
+            else if($user_role == 'ResponsableStock') {
+                $_SESSION['admin_name'] = $user_name;
+                header('location: Admin/respS.php');
+                exit();
+            }
+            else if($user_role == 'admin'){
+                header('location: Admin/admin.php');
+                exit();
+            }
+            else if($user_role == 'respo employee'){
+                header('location: Admin/respE.php');
+                exit();
+            }
+            else if($user_role == 'fournisseur'){
+                header('location: Admin/four.php');
+                exit();
+            }
+        } else {
+            $error[] = 'Incorrect email or password!';
         }
+<<<<<<< HEAD
         else if($user_role == 'ResponsableStock') {
             $_SESSION['admin_name'] = $user_name;
             header('location: Admin/stock.php');
@@ -42,7 +66,13 @@ if(isset($_POST['submit'])) {
         }
     } else {
         $error[] = 'Incorrect email or password!';
+=======
+>>>>>>> f96cd591bb9775460027a4aee5f33f63efbdad12
     }
+    else {
+        header('location: Admin/accessdenied.php');
+        exit();
+    }  
 }
 ?>
 <!DOCTYPE html>

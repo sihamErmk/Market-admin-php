@@ -1,6 +1,7 @@
 
 <?php 
 session_start();
+<<<<<<< HEAD
 include('includes/header.php');
 
 $host = 'localhost';
@@ -57,3 +58,7 @@ try {
         <?php endforeach; ?>
     </tbody>
 </table>
+=======
+include('includes/header.php') 
+?>
+>>>>>>> f96cd591bb9775460027a4aee5f33f63efbdad12
